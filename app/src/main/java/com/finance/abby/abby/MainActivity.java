@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.stetho.Stetho;
+
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_main);
         buttonlogin = findViewById(R.id.login);
         userName = findViewById(R.id.userName);
@@ -31,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this,Bill_Activity.class);
                     startActivity(intent);
                 }else{
-                    Log.i("111","123");
                     Toast.makeText(MainActivity.this,"账号或密码错误",Toast.LENGTH_LONG).show();
                 }
             }
