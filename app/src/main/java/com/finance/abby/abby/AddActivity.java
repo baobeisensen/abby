@@ -15,7 +15,7 @@ public class AddActivity extends AppCompatActivity {
     private Button buttonSave;
     private EditText costType, costNumber;
     public static final String DataBaseName = "costBill";
-
+    private Long resulta=0L;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +35,10 @@ public class AddActivity extends AppCompatActivity {
                 contentValues.put("cost_type", type);
                 contentValues.put("cost_number", number);
                 Long resuleLine = sqldb.insert(DataBaseName, null, contentValues);
+
                 contentValues.clear();
-                if (resuleLine == 1L) {
+                if (resuleLine == resulta+1) {
+                    resulta = resuleLine;
                     Toast.makeText(AddActivity.this, "保存成功", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(AddActivity.this, ListActivity.class);
                     startActivity(intent);
