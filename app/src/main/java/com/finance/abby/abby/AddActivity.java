@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,16 +29,16 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String type = costType.getText().toString();
-                Double number = Double.parseDouble(costNumber.getText().toString());
+                Double number = 0-Double.parseDouble(costNumber.getText().toString());
                 SQLiteDatabase sqldb = openOrCreateDatabase("COST.db", MODE_PRIVATE, null);
                 sqldb.execSQL("Create Table if not exists " + DataBaseName + "(_id integer primary key autoincrement,cost_type text not null,cost_number number not null,inputTime TIMESTAMP default (datetime('now', 'localtime')))");
                 ContentValues contentValues = new ContentValues();
                 contentValues.put("cost_type", type);
                 contentValues.put("cost_number", number);
                 Long resuleLine = sqldb.insert(DataBaseName, null, contentValues);
-
+                sqldb.close();
                 contentValues.clear();
-                if (resuleLine == resulta+1) {
+                if (resuleLine != 0) {
                     resulta = resuleLine;
                     Toast.makeText(AddActivity.this, "保存成功", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(AddActivity.this, ListActivity.class);
