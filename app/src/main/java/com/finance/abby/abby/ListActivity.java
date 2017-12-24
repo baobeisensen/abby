@@ -5,17 +5,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.finance.abby.abby.AddActivity.DataBaseName;
-
 public class ListActivity extends AppCompatActivity {
     private ListView listView;
+    private ImageView headPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
