@@ -40,12 +40,11 @@ public class ListActivity extends AppCompatActivity {
         if (c==null){
             Toast.makeText(ListActivity.this,"没有记录",Toast.LENGTH_LONG);
         }else{
-             Long sum = 0L;
+             Double sum = 0D;
             while (c.moveToNext()){
                 String type = c.getString(c.getColumnIndex("cost_type"));//类型
-                Long number = c.getLong(c.getColumnIndex("cost_number"));//金额
+                Double number = c.getDouble(c.getColumnIndex("cost_number"));//金额
                 sum = number+sum;
-                Log.i("tag", "onCreate）））））））））））））））: "+number);
                 adapter.add(type+" 花费金额为："+number);
             }
             adapter.add("收支总金额为："+sum);

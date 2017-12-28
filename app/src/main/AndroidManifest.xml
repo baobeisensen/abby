@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.finance.abby.abby">
 
-
+    <!--联网权限-->
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <!-- SD卡读写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:name=".AbbyApplication"
         android:allowBackup="true"
@@ -19,6 +20,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!--<intent-filter>
+            将应用注册为一个拍照功能的应用
+                <action android:name="android.media.action.IMAGE_CAPTURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>-->
         </activity>
         <activity android:name=".Bill_Activity" />
         <activity android:name=".AddActivity" />
